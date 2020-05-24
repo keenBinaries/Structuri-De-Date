@@ -1,4 +1,0 @@
-﻿  Source.cpp
-C:\Dev\StructuriDeDate\Heap\Source.cpp(38,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Dev\StructuriDeDate\Heap\Source.cpp(103,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Heap.vcxproj -> C:\Dev\StructuriDeDate\Debug\Heap.exe
