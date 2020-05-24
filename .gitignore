@@ -1,0 +1,12 @@
+# Directories
+.vs/
+/bin/
+int/
+
+# Files
+*.suo
+*.user
+*.vcxproj
+*.filters
+*.sln.docstates
+*.sln

@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\Dev\StructuriDeDate\AVLTree\Source.cpp(36,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\AVLTree\Source.cpp(52,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\AVLTree\Source.cpp(327,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Dev\StructuriDeDate\AVLTree\Source.cpp(96): warning C4715: 'CautaDupaId': not all control paths return a value
+  AVLTree.vcxproj -> C:\Dev\StructuriDeDate\Debug\AVLTree.exe

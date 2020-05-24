@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\Dev\StructuriDeDate\ListaSimplaPrimitiva\Source.cpp(300): warning C4715: 'CautareValoare': not all control paths return a value
+  ListaSimplaPrimitiva.vcxproj -> C:\Dev\StructuriDeDate\Debug\ListaSimplaPrimitiva.exe

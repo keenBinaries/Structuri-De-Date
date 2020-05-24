@@ -1,0 +1,13 @@
+﻿  Source.cpp
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(16,20): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(91,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(240,17): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(287,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(267,17): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(278,20): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(281,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(283,22): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(286,20): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(319,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Dev\StructuriDeDate\HashTable\Source.cpp(184): warning C4700: uninitialized local variable 'studentGasit' used
+  HashTable.vcxproj -> C:\Dev\StructuriDeDate\Debug\HashTable.exe
