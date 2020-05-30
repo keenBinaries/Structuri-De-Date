@@ -2,6 +2,8 @@
 #include <malloc.h>
 #include <string.h>
 
+#define DIMENSIUN 100
+
 struct Student
 {
 	int id;
@@ -53,22 +55,23 @@ Heap CreazaHeap(int dimensiune)
 	return heap;
 }
 
-void Filtreaza(Heap heap, int pozitie)
+void Filtreaza(Heap& heap, int pozitie)
 {
 	int fiuStanga = 2 * pozitie + 1;
 	int fiuDreapta = 2 * pozitie + 2;
 
 	int max = pozitie;
 
-	if (heap.vector[max].id < heap.vector[fiuStanga].id && fiuStanga < heap.dimensiune)
+	if (heap.vector[max].id < heap.vector[fiuStanga].id && fiuStanga <= heap.dimensiune)
 		max = fiuStanga;
 
-	if (heap.vector[max].id < heap.vector[fiuDreapta].id && fiuDreapta < heap.dimensiune)
+	if (heap.vector[max].id < heap.vector[fiuDreapta].id && fiuDreapta <= heap.dimensiune)
 		max = fiuDreapta;
 
 	if (max != pozitie)
 	{
 		Student temp = heap.vector[max];
+
 		heap.vector[max] = heap.vector[pozitie];
 		heap.vector[pozitie] = temp;
 
@@ -77,9 +80,9 @@ void Filtreaza(Heap heap, int pozitie)
 	}
 }
 
-void Insereaza(Heap heap, Student student)
+void Insereaza(Heap& heap, Student student)
 {
-	if (heap.dimensiune <= 0) return;
+	if (heap.dimensiune < 0) return;
 
 	Student* tempVec = (Student*)malloc(sizeof(Student) * (heap.dimensiune + 1));
 
@@ -93,13 +96,101 @@ void Insereaza(Heap heap, Student student)
 
 	heap.dimensiune++;
 
-	for (int i = (heap.dimensiune - 1) / 2; i >= 0; i--)
+	for (int i = (heap.dimensiune - 2) / 2; i >= 0; i--)
 	{
 		Filtreaza(heap, i);
 	}
 }
 
+Student ExtrageRoot(Heap& heap)
+{
+	if (heap.dimensiune <= 0) return CreazaStudent(NULL, "NULL", NULL, NULL);
+
+	Student root = heap.vector[0];
+	Student* vecTemp = (Student*)malloc(sizeof(Student) * (heap.dimensiune - 1));
+
+	for (int i = 1; i < heap.dimensiune; i++)
+		vecTemp[i - 1] = heap.vector[i];
+
+	free(heap.vector);
+	heap.vector = vecTemp;
+
+	heap.dimensiune--;
+
+	for (int i = heap.dimensiune; i >= 0; i--)
+	{
+		Filtreaza(heap, i);
+	}
+
+	return root;
+}
+
+void AfisareConditionata(Heap& heap, int pozitie) 
+{
+	while (heap.vector[0].id >= pozitie)
+	{
+		Student student = ExtrageRoot(heap);
+		AfiseazaStudent(student);
+		free(student.nume);
+	}
+}
+
+void Afiseaza(Heap heap)
+{
+	if (heap.vector != NULL)
+		for (int i = 0; i < heap.dimensiune; i++)
+			AfiseazaStudent(heap.vector[i]);
+}
+
+Heap DezalocaHeap(Heap heap)
+{
+	for (int i = 0; i < heap.dimensiune - 1; i++)
+		free(heap.vector[i].nume);
+
+	free(heap.vector);
+
+	heap.dimensiune = 0;
+
+	return heap;
+}
+
 void main()
 {
+	Student s1 = CreazaStudent(20, "Alyce", 20, 7);
+	Student s2 = CreazaStudent(5, "Lacey", 21, 9);
+	Student s3 = CreazaStudent(30, "Ceyla", 22, 10);
+	Student s4 = CreazaStudent(1, "Yecla", 23, 5);
+	Student s5 = CreazaStudent(15, "Ion", 15, 7);
+	Student s6 = CreazaStudent(25, "Marcel", 16, 8);
+	Student s7 = CreazaStudent(40, "Viorel", 17, 9);
+	Student s8 = CreazaStudent(9, "Ionut", 17, 9);
 
+	Heap heap = CreazaHeap(0);
+
+	Insereaza(heap, s1);
+	Insereaza(heap, s2);
+	Insereaza(heap, s3);
+	Insereaza(heap, s4);
+	Insereaza(heap, s5);
+	Insereaza(heap, s6);
+	Insereaza(heap, s7);
+	Insereaza(heap, s8);
+	
+	Afiseaza(heap);
+
+	Student extras = ExtrageRoot(heap);
+	printf("\n\n");
+
+	Afiseaza(heap);
+	printf("\n\n");
+
+	Student extras1 = ExtrageRoot(heap);
+	printf("\n\n");
+
+	Afiseaza(heap);
+	printf("\n\n");
+
+	// heap = DezalocaHeap(heap);
+
+	Afiseaza(heap);
 }
