@@ -1,0 +1,4 @@
+Alyce 20  7.00
+Lacey 21  9.00
+Ceyla 22 10.00
+Yecla 23  5.00

@@ -297,6 +297,77 @@ HashTabel CitesteDinFisier(const char* fisierCale, HashTabel tabel)
 	return tabel;
 }
 
+Nod* StergeDinListaDupaCheie(Nod* cap, const char* cheie)
+{
+	if (cap == NULL) return cap;
+
+	if (strcmp(cap->info.nume, cheie) == 0)
+	{
+		Nod* temp = cap->next;
+
+		free(cap->info.nume);
+		free(cap);
+
+		cap = temp;
+	}
+	else
+	{
+		Nod* temp = cap;
+
+		while (temp->next)
+		{
+			if (strcmp(temp->next->info.nume, cheie) == 0)
+			{
+				Nod* temp2 = temp->next;
+				temp->next = temp->next->next;
+
+				free(temp2->info.nume);
+
+				free(temp2);
+
+				break;
+			}
+			temp = temp->next;
+		}
+	}
+
+	return cap;
+}
+
+HashTabel StergeDupaCheieChaining(HashTabel tabel, const char* cheie)
+{
+	if (tabel.vector == NULL) return tabel;
+
+	int index = HashFn(cheie, tabel.dimensiune);
+	tabel.vector[index] = StergeDinListaDupaCheie(tabel.vector[index], cheie);
+
+	return tabel;
+}
+
+HashTabel StergeDupaCheieProbing(HashTabel tabel, const char* cheie)
+{
+	if (tabel.vector == NULL) return tabel;
+
+	int index = HashFn(cheie, tabel.dimensiune);
+
+	Student student = CautaInHashChaining(tabel, cheie);
+
+	if (student.nume == NULL)
+	{
+		// Conditie care sa opreasca executia daca la indexul
+		// pe care HashFn la returnat prima data nu este nimic
+		while (tabel.vector[index] != NULL && strcmp(tabel.vector[index]->info.nume, cheie) != 0)
+		{
+			index++;
+			index = index % tabel.dimensiune;
+		}
+
+		tabel.vector[index] = StergeDinListaDupaCheie(tabel.vector[index], cheie);
+	}
+
+	return tabel;
+}
+
 void AfiseazaLista(Nod* cap)
 {
 	while (cap)
@@ -359,6 +430,11 @@ void main()
 	HashTabel hashTabelDinFisier = CreazaHashTabel(DIMENSIUNE_TABEL);
 	hashTabelDinFisier = CitesteDinFisier("fisier.txt", hashTabelDinFisier);
 	AfiseazaHash(hashTabelDinFisier);
+	printf("\n");
 
+	hashTabel = StergeDupaCheieChaining(hashTabel, "Lacey");
+	hashTabel = StergeDupaCheieProbing(hashTabel, "Yecla");
+
+	AfiseazaHash(hashTabel);
 	// TODO: Cautare generala Cautam mai intai prin chaining si apoi prin probing 
 }
